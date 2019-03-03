@@ -45,7 +45,7 @@ In general, `bs.send` external looks like this:
 [@bs.send] external fn: (obj, arg1, arg2, arg3, ... , argN) => ...;
 ```
 
-you call it like this:
+You call `fn` like this:
 
 ```reason
 fn(obj, arg1, arg2, arg3, ... , argN);
@@ -57,7 +57,7 @@ fn(obj, arg1, arg2, arg3, ... , argN);
 */
 ```
 
-and BS compiles it to:
+and BS compiles this to:
 
 ```js
 obj.fn(arg1, arg2, arg3, ... , argN);
@@ -81,13 +81,13 @@ That's what `bs.send.pipe` is for.
 
 `bs.send.pipe`, like `bs.send`, is used to call a function on an object.
 
-It looks like this:
+Unlike `bs.send`, `bs.send.pipe` takes the object as an argument:
 
 ```reason
 [@bs.send.pipe: obj] external fn: (arg1, arg2, arg3, ... , argN) => ...;
 ```
 
-you call it like this:
+You call `fn` like this:
 
 ```reason
 fn(arg1, arg2, arg3, ... , argN, obj);
@@ -99,7 +99,7 @@ fn(arg1, arg2, arg3, ... , argN, obj);
 */
 ```
 
-and BS compiles it to:
+and BS compiles this to:
 
 ```js
 obj.fn(arg1, arg2, arg3, ... , argN);
