@@ -1,43 +1,109 @@
 # `[@bs.send]`
 
-`bs.send` is used to call a function inside an object.
+* [`[@bs.send]`](#bssend)
+* [`[@bs.send.pipe]`](#bssendpipe)
 
-JS example:
+## `[@bs.send]`
 
-```js
-element.appendChild(anotherElement);
-```
+`bs.send` is used to call a function on an object.
 
-You type and use it like so:
+For example, say you created a `div` and a `button`:
 
 ```reason
-fn(obj, arg1, arg2, arg3, ...)
+type element;
+[@bs.scope "document"] [@bs.val] external createElement: string => element = "";
+
+let div = createElement("div");
+let button = createElement("button");
+```
+
+How can we append the `button` to the `div`?
+
+Doing this doesn't work:
+
+```reason
+div.appendChild(button); // Error: The record field appendChild can't be found.
+```
+
+That's what `bs.send` is for:
+
+```reason
+[@bs.send] external appendChild: (element, element) => element = "";
+
+appendChild(div, button);
+```
+
+which compiles to:
+
+```js
+div.appendChild(button);
+```
+
+In general, `bs.send` external looks like this:
+
+```reason
+[@bs.send] external fn: (obj, arg1, arg2, arg3, ... , argN) => ...;
+```
+
+you call it like this:
+
+```reason
+fn(obj, arg1, arg2, arg3, ... , argN);
+
+/*
+  or equivalently:
+
+  obj->fn(arg1, arg2, arg3, ... , argN);
+*/
 ```
 
 and BS compiles it to:
 
 ```js
-obj.fn(arg1, arg2, arg3, ...)
+obj.fn(arg1, arg2, arg3, ... , argN);
 ```
 
-For example:
+What if you want the object to come after the arguments like so:
 
 ```reason
-type element;
-[@bs.scope "document"] [@bs.val] external createElement: string => element = "";
-[@bs.send] external appendChild: (element, element) => element = "";
+fn(arg1, arg2, arg3, ... , argN, obj);
 
-let div = createElement("div");
-let button = createElement("button");
+/*
+  or equivalently:
 
-appendChild(div, button)
+  obj |> fn(arg1, arg2, arg3, ... , argN);
+*/
 ```
 
-compiles to:
+That's what `bs.send.pipe` is for.
+
+## `[@bs.send.pipe]`
+
+`bs.send.pipe`, like `bs.send`, is used to call a function on an object.
+
+It looks like this:
+
+```reason
+[@bs.send.pipe: obj] external fn: (arg1, arg2, arg3, ... , argN) => ...;
+```
+
+you call it like this:
+
+```reason
+fn(arg1, arg2, arg3, ... , argN, obj);
+
+/*
+  or equivalently:
+
+  obj |> fn(arg1, arg2, arg3, ... , argN);
+*/
+```
+
+and BS compiles it to:
 
 ```js
-var div = document.createElement("div");
-var button = document.createElement("button");
-
-div.appendChild(button);
+obj.fn(arg1, arg2, arg3, ... , argN);
 ```
+
+
+
