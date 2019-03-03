@@ -2,6 +2,7 @@
 
 - [`[@bs.val]`](./bs.val.md)
 - [`[@bs.get]`](./bs.get.md)
+- [`[@bs.set]`](./bs.set.md)
 - [`[@bs.send]`](./bs.send.md)
 - [`[@bs.module]`](./bs.module.md)
 - [`[@bs.string]`](./bs.string.md)
