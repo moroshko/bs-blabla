@@ -10,7 +10,7 @@ For example:
 setTimeout(() => Js.log("Hello"), 1000);
 ```
 
-When BS and JS names match, you can use a `""` shorthand:
+**Tip:** When BS and JS names match, you can use a `""` shorthand:
 
 ```reason
 [@bs.val] external setTimeout : (unit => unit, int) => int = "";
