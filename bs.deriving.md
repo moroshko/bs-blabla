@@ -141,54 +141,7 @@ let misha = person(~name="Misha", ~age=18);
 Js.log(misha); /* => {"name":"Misha","age":18} */
 ```
 
-### Renaming fields
-
-When field names are valid in JS, but not in BS, use `bs.as`.
-
-For example:
-
-```reason
-[@bs.deriving abstract]
-type data = {
-  [@bs.as "type"] type_: string,
-  [@bs.as "aria-label"] ariaLabel: string
-};
-
-let d = data(~type_="message", ~ariaLabel="hello");
-```
-
-compiles to:
-
-```js
-var d = {
-  type: "message",
-  "aria-label": "hello"
-};
-```
-
-### Optional fields
-
-To mark fields as optional, use `bs.optional`.
-
-For example:
-
-```reason
-[@bs.deriving abstract]
-type person = {
-  name: string,
-  [@bs.optional] age: int
-};
-
-let misha = person(~name="Misha", ());
-```
-
-compiles to:
-
-```js
-var misha = {
-  name: "Misha"
-};
-```
+You can also mark fields as optional with [`bs.optional`](./bs.optional.md) and rename fields with [`bs.as`](./bs.as.md).
 
 ### Getters
 

@@ -11,4 +11,6 @@
 - [`[@bs.unwrap]`](./bs.unwrap.md)
 - [`[@bs.new]`](./bs.new.md)
 - [`[@bs.deriving]`](./bs.deriving.md)
+- [`[@bs.optional]`](./bs.optional.md)
+- [`[@bs.as]`](./bs.as.md)
 - [`[@bs.variadic]`](./bs.variadic.md)
