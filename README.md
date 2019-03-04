@@ -1,6 +1,7 @@
 # Table Of Contents
 
 - [`[@bs.val]`](./bs.val.md)
+- [`[@bs.scope]`](./bs.scope.md)
 - [`[@bs.get]`](./bs.get.md)
 - [`[@bs.set]`](./bs.set.md)
 - [`[@bs.send]`](./bs.send.md)
