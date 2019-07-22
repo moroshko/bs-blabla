@@ -80,6 +80,7 @@ Similarly, imagine your new Reason code has the following variant:
 type action =
   | Add(string)
   | Toggle(int)
+  | Delete(int)
   | DeleteAll;
 ```
 
@@ -92,6 +93,7 @@ By adding `bs.deriving accessors`, you get a creation function for every variant
 type action =
   | Add(string)
   | Toggle(int)
+  | Delete(int)
   | DeleteAll;
 ```
 
@@ -100,7 +102,8 @@ Now, in JS you can do:
 ```js
 let actions = [
   add("Drink coffee"), 
-  toggle(34), 
+  toggle(34),
+  delete(12),
   deleteAll
 ];
 ```
