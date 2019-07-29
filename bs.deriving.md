@@ -163,7 +163,7 @@ Js.log(misha->ageGet);  /* => undefined */
 
 ### Setters
 
-Field values can't be updated unless makred with `mutable`.
+Field values can't be updated unless marked with `mutable`.
 
 `bs.deriving abstract` generates a setter function for every mutable field.
 
