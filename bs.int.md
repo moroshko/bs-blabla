@@ -7,7 +7,7 @@ For example:
 ```reason
 [@bs.val]
 external log: (
-  ~status: [@bs.int] [[@bs.as 200] `ok | [@bs.as 400] `bad_request | `unauthorized],
+  ~status: [@bs.int] [[@bs.as 200] `ok | [@bs.as 400] `bad_request | [@bs.as 401] `unauthorized],
   ~message: string
 ) => string = "";
 
